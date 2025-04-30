@@ -13,11 +13,11 @@ func main() {
 	wordCountPtr := flag.Int("w", 5, "Number of words")
 	flag.IntVar(wordCountPtr, "words", 5, "Number of words")
 
-	charCountPtr := flag.Int("l", 25, "Number of characters")
-	flag.IntVar(charCountPtr, "characters", 25, "Number of characters")
+	charCountPtr := flag.Int("l", 28, "Number of characters")
+	flag.IntVar(charCountPtr, "length", 28, "Number of characters")
 
-	minCharsPtr := flag.Int("minc", 3, "Minimum number of characters in a word")
-	maxCharsPtr := flag.Int("maxc", 10, "Maximum number of characters in a word")
+	minCharsPtr := flag.Int("minc", 2, "Minimum number of characters in a word")
+	maxCharsPtr := flag.Int("maxc", 11, "Maximum number of characters in a word")
 
 	separatorPtr := flag.String("s", " ", "Separator string")
 	flag.StringVar(separatorPtr, "separator", " ", "Separator string")
