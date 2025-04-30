@@ -61,4 +61,4 @@ for i in $(seq 1 100); do ./bspass; done | column
 
 ## What is this
 
-This program takes random words from [`/usr/share/dict/words`](https://en.wikipedia.org/wiki/Words_(Unix)) on Macos and puts them in sequence to form a password, conforming with the ideas of the `correct horse battery staple` XKCD. It has 235 976 words to chose from, although some are of lengths not included in generation by default.
+This program takes random words from [`/usr/share/dict/words`](https://en.wikipedia.org/wiki/Words_(Unix)) on Macos and puts them in sequence to form a password, conforming with the ideas of the [`correct horse battery staple` XKCD](https://xkcd.com/936/). It has 235 976 words to chose from, although some are of lengths not included in generation by default.
