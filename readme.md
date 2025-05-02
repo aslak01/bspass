@@ -11,7 +11,7 @@ mantle limiting so mazopathic mo
 ## Options
 
 ```bash
-./ppgen -h
+./ppgen -h         
 Usage of ./ppgen:
   -c	Copy to clipboard
   -copy
@@ -28,6 +28,8 @@ Usage of ./ppgen:
     	Separator string (default " ")
   -separator string
     	Separator string (default " ")
+  -t string
+    	Test a password's entropy
   -v	Enable verbose output
   -verbose
     	Enable verbose output
