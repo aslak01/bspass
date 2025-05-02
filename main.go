@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
 	"strings"
 	"time"
 
@@ -28,7 +29,29 @@ func main() {
 	copyPtr := flag.Bool("c", false, "Copy to clipboard")
 	flag.BoolVar(copyPtr, "copy", false, "Copy to clipboard")
 
+	testPtr := flag.String("t", "", "Test a password's entropy")
+
 	flag.Parse()
+
+	testPass := *testPtr
+
+	if testPass != "" {
+
+		fmt.Println("Entropy comparison:")
+		comparisons := map[string]float64{
+			testPass:   CalculatePasswordEntropy(testPass),
+			"123456":   CalculatePasswordEntropy("123456"),
+			"password": CalculatePasswordEntropy("password"),
+			"hunter2":  CalculatePasswordEntropy("hunter2"),
+		}
+
+		for key, value := range comparisons {
+			fmt.Printf("  - %-10s: %.1f bits\n", key, value) // Use %-10s for alignment
+		}
+
+		os.Exit(0)
+
+	}
 
 	wordCount := *wordCountPtr
 	charCount := *charCountPtr
@@ -37,6 +60,14 @@ func main() {
 	separator := *separatorPtr
 	verbose := *verbosePtr
 	copy := *copyPtr
+
+	if maxChars > 24 {
+		panic("Word length must be 24 characters or below")
+	}
+
+	if wordCount < 1 || charCount < 1 || minChars < 1 || maxChars < 1 || maxChars < minChars {
+		panic("Invalid parameters.")
+	}
 
 	var start time.Time
 
@@ -82,10 +113,10 @@ func main() {
 		if verbose {
 			fmt.Println("Entropy comparison:")
 			comparisons := map[string]float64{
-				"bspass 📟": CalculatePasswordEntropy(password),
-				"123456":   CalculatePasswordEntropy("123456"),
-				"password": CalculatePasswordEntropy("password"),
-				"hunter2":  CalculatePasswordEntropy("hunter2"),
+				"Generated 🎰": CalculatePasswordEntropy(password),
+				"123456":      CalculatePasswordEntropy("123456"),
+				"password":    CalculatePasswordEntropy("password"),
+				"hunter2":     CalculatePasswordEntropy("hunter2"),
 			}
 			for key, value := range comparisons {
 				fmt.Printf("  - %-10s: %.1f bits\n", key, value) // Use %-10s for alignment

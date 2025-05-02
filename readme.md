@@ -1,18 +1,18 @@
-# `bspass`
+# `ppgen`
 
 ## Usage
 
 ```bash
 go build
-./bspass              
+./ppgen              
 mantle limiting so mazopathic mo
 ```
 
 ## Options
 
 ```bash
-./bspass -h
-Usage of ./bspass:
+./ppgen -h
+Usage of ./ppgen:
   -c	Copy to clipboard
   -copy
     	Copy to clipboard
@@ -42,10 +42,10 @@ Usage of ./bspass:
 With the default configuration, this generates passwords with about 130-160 bits of entropy. Verbose mode displays generated password's entropy.
 
 ```bash
-❯ ./bspass -v
+❯ ./ppgen -v
 refixture busket athyrid ut ween
 Entropy comparison:
-  - bspass 📟  : 150.4 bits
+  - ppgen 📟  : 150.4 bits
   - 123456    : 19.9 bits
   - password  : 37.6 bits
   - hunter2   : 36.2 bits
@@ -55,7 +55,7 @@ Generation Time: 5.06 ms
 If you want to have a more indepth look at the passwords this generates you can use
 
 ```bash
-for i in $(seq 1 100); do ./bspass; done | column
+for i in $(seq 1 100); do ./ppgen; done | column
 ```
 
 

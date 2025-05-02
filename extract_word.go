@@ -2,16 +2,18 @@ package main
 
 import (
 	"bufio"
+	"embed"
 	"fmt"
 	"math/rand"
-	"os"
-	"path/filepath"
 	"strings"
 )
 
+//go:embed words/*
+var wordFiles embed.FS
+
 func getRandomWordFromFile(number int) (string, error) {
-	filePath := filepath.Join("words", fmt.Sprintf("words_%d", number))
-	file, err := os.Open(filePath)
+	filePath := fmt.Sprintf("words/words_%d", number)
+	file, err := wordFiles.Open(filePath)
 	if err != nil {
 		return "", fmt.Errorf("error opening file %s: %w", filePath, err)
 	}

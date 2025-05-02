@@ -1,4 +1,4 @@
-module bspass
+module github.com/aslak01/ppgen
 
 go 1.24.2
 
